@@ -2,7 +2,7 @@
 // SimplePend.cs Defines a class for simulating a Simple Pendulum
 //============================================================================
 using System;
-/////
+////////
 namespace Sim 
 {
     public class SimplePend
