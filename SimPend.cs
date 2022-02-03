@@ -50,11 +50,11 @@ namespace Sim
         {
             for( int i=0; i<n; i++) //loop will go from 0 to 1 and hopefull
             {                      //put the 
-                k1= st(i); //k calculations
-                k2= st(i)+ (.5*k1*h);
-                k3= st(i)+ (.5*k2*h);
-                k4= st(i)+ (k3*h);
-                ff(i)= (1.0/6.0)*(k1+(2*k2)+(2*k3)+k4); //right side calculation
+                k1= st[i]; //k calculations
+                k2= st[i]+ (.5*k1*h);
+                k3= st[i]+ (.5*k2*h);
+                k4= st[i]+ (k3*h);
+                ff[i]= (1.0/6.0)*(k1+(2*k2)+(2*k3)+k4); //right side calculation
             }
             //ff[0] = st[1]; 
             //ff[1] = -g/len * Math.Sin(st[0]);
