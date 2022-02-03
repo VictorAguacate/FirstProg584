@@ -12,6 +12,10 @@ namespace Sim
         int n = 2;               // number of states
         private double[] X;     //array of states
         private double[] f;    //right side of equation evaluation
+        private double k1; //Ks for rk4 method
+        private double k2;
+        private double k3;
+        private double k4;
         //====================================================================
         // Constructor
         //====================================================================
