@@ -36,6 +36,7 @@ namespace Sim
         {
             rhsFunc(X,f,dt); 
             int i;
+            //Console.WriteLine($"{X[0].ToString()}");
             for(i=0; i<n; i++)
             {
                 X[i]= X[i] + f[i] * dt;
@@ -48,13 +49,24 @@ namespace Sim
         //====================================================================
         public void rhsFunc(double[] st, double[] ff,double h)
         {
+            double[] ts;
+            ts= new double[n];
+            ts[0]= st[1]; ts[1]= st[0];
+            
             for( int i=0; i<n; i++) //loop will go from 0 to 1 and hopefull
             {                      //put the 
-                k1= st[i]; //k calculations
-                k2= st[i]+ (.5*k1*h);
-                k3= st[i]+ (.5*k2*h);
-                k4= st[i]+ (k3*h);
-                ff[i]= (1.0/6.0)*(k1+(2*k2)+(2*k3)+k4); //right side calculation
+                k1= ts[i]; //k calculations
+                k2= ts[i]+ (.5*k1*h);
+                k3= ts[i]+ (.5*k2*h);
+                k4= ts[i]+ (k3*h);
+                if (i==0)
+                {
+                    ff[i]= (1.0/6.0)*(k1+(2*k2)+(2*k3)+k4); //right side calculation
+                }
+                if (i==1)
+                { 
+                    ff[i]= -g/len * Math.Sin((1.0/6.0)*(k1+(2*k2)+(2*k3)+k4));
+                }
             }
             //ff[0] = st[1]; 
             //ff[1] = -g/len * Math.Sin(st[0]);
